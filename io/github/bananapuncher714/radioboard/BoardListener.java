@@ -164,7 +164,7 @@ public class BoardListener implements Listener {
 			Vector normal = new Vector( face.getModX(), face.getModY(), face.getModZ() );
 			// Check to see if the player is actually looking at the board
 			if ( normal.dot( originDirection ) < 0 ) {
-//				player.sendMessage( "You are looking at the back of the board!" );
+				player.sendMessage( "You are looking at the back of the board!" );
 				continue;
 			}
 			// Get the point of the board
@@ -183,21 +183,21 @@ public class BoardListener implements Listener {
 			// Check to see if it is a clicked frame
 			ItemFrame frame = board.getItemFrameAt( location );
 			if ( frame == null ) {
-//				player.sendMessage( "No frame in sight!" );
+				player.sendMessage( "No frame in sight!" );
 				continue;
 			}
 			// Make sure the player can actually see the frame
-//			if ( !player.hasLineOfSight( frame ) ){
-//				player.sendMessage( "You cannot see the item frame!" );
-//				continue;
-//			}
+			if ( !player.hasLineOfSight( frame ) ){
+				player.sendMessage( "You cannot see the item frame!" );
+				continue;
+			}
 			int id = board.getFrames().indexOf( frame.getUniqueId() );
 			if ( id < 0 ) {
-//				player.sendMessage( "You clicked on an invalid map!" );
+				player.sendMessage( "You clicked on an invalid map!" );
 				continue;
 			}
 			id += board.getId();
-//			player.sendMessage( "You clicked on map with id of " + id );
+			player.sendMessage( "You clicked on map with id of " + id );
 			int x = 0;
 			int y = 0;
 			location.subtract( location.getBlockX(), location.getBlockY(), location.getBlockZ() );
